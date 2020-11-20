@@ -1,0 +1,107 @@
+{{ define "main" }}
+  <main id="inner-content" class="clearfix">
+    <header>
+      <h2>{{ .Title }}</h2>
+      <p id="crumb"><small><strong>You are here:</strong> <a href="/">Home</a> &gt; {{ .Title }}</small></p>
+    </header>
+    {{ if .Params.image }}
+      <figure id="fillpic">
+        <img src="{{ .Params.image | relURL }}" alt=" ">
+      </figure>
+    {{ end }}
+    <article>
+      <div>{{ .Content }}</div>
+      {{ if in .Title "Gallery"}}
+        {{ with .Resources.ByType "image" }}
+          <ul id="workgallery" class="clearfix">
+            {{ range . }}
+              {{ $thumbnail := .Fill "146x110" }}
+              <li>
+                <a rel="gallery_group" href="{{ .RelPermalink }}" title="{{ .Name }}">
+                  <img alt=" " src="{{ $thumbnail.RelPermalink }}">
+                </a>
+              </li>
+            {{ end }}
+          </ul>
+        {{ end }}
+      {{ end }}
+      {{ if in .Title "Contact"}}
+        <form name="contact" method="post" enctype="multipart/form-data" action="/thanks/" data-netlify="true" data-netlify-recaptcha="true">
+          <input type="hidden" name="form-name" value="contact">
+          <span class="req">*</span> Required
+          <div class="webform">
+            <div class="item">
+              <label for="FullName">Your name <span class="req">*</span></label>
+              <div class="control">
+                <input type="text" name="FullName" id="FullName" class="cat_textbox" maxlength="255" placeholder="Name" required>
+              </div>
+            </div>
+            <div class="item">
+              <label for="EmailAddress">Email address <span class="req">*</span></label>
+              <div class="control">
+                <input type="text" name="EmailAddress" id="EmailAddress" class="cat_textbox" maxlength="255" placeholder="Email" required>
+              </div>
+            </div>
+            <div class="item">
+              <label for="Phone">Phone</label>
+              <div class="control">
+                <input type="tel" name="Phone" id="Phone" class="cat_textbox" maxlength="255" placeholder="e.g. 0400 555 555">
+              </div>
+            </div>
+            <div class="item">
+              <label for="HomeAddress">Street address</label>
+              <div class="control">
+                <input type="text" name="HomeAddress" id="HomeAddress" class="cat_textbox" maxlength="500">
+              </div>
+            </div>
+            <div class="item">
+              <label for="HomeCity">City/Suburb <span class="req">*</span></label>
+              <div class="control">
+                <input type="text" name="HomeCity" id="HomeCity" class="cat_textbox" maxlength="255" required>
+              </div>
+            </div>
+            <div class="item">
+              <label for="HomeZip">Postcode</label>
+              <div class="control">
+                <input type="text" name="HomeZip" id="HomeZip" class="cat_textbox" maxlength="255">
+              </div>
+              <input type="hidden" value="TAS" name="HomeState" id="HomeState"> 
+              <input type="hidden" value="AU" name="HomeCountry" id="HomeCountry">
+            </div>
+            <div class="item">
+              <label>Preferred contact method</label>
+              <div class="control">
+                <label class="radio">
+                  <input type="radio" name="CAT_Custom_868" id="CAT_Custom_868_0" value="Phone">&nbsp;Phone
+                </label> 
+                <label class="radio">
+                  <input type="radio" name="CAT_Custom_868" id="CAT_Custom_868_1" value="Email" checked>&nbsp;Email
+                </label>
+              </div>
+            </div>
+            <div class="item">
+              <label for="CAT_Custom_869">Please outline your requirements</label>
+              <div class="control">
+                <textarea name="CAT_Custom_869" id="CAT_Custom_869" rows="4" class="cat_listbox" onkeydown="if(this.value.length>=1024)this.value=this.value.substring(0,1023);"></textarea>
+              </div>
+            </div>
+            <div class="item" data-netlify-recaptcha="true"></div>
+            <div class="item">
+              <div class="control">
+                <input type="submit" class="cat_button" value="Submit" id="catwebformbutton">
+              </div>
+            </div>
+          </div>
+        </form>
+        <p><a href="/privacy/">Privacy Policy</a></p>
+      {{ else }}
+        <p>
+          Call us today so we can provide you with a quote <a href="tel:+61409586625">0409 586 625</a>
+        </p>
+      {{ end }}
+    </article>
+    <figure id="quote">
+        <a href="/contact"><img src="/images/bg/quote-link.jpg" alt="Get a quote" /></a>
+    </figure>
+  </main>
+{{ end }}

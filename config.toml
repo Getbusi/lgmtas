@@ -1,0 +1,5 @@
+baseURL = "https://www.lgmtas.com.au/"
+languageCode = "en-au"
+languageLang = "en"
+theme = "gb-starter"
+title = "Lifestyle Garden Maintenance"

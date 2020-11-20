@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="{{ .Site.LanguageCode | default "en-us" }}">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>{{ .Title }} - {{ $.Site.Title }}</title>
+  {{ with .Site.Params.description }}<meta name="description" content="{{ . }}">{{ end }}
+  {{ with .Site.Params.author }}<meta name="author" content="{{ . }}">{{ end }}
+  <link rel="stylesheet" href="{{ "css/style.min.css" | relURL }}">
+  <link rel="stylesheet" href="{{ "js/fancybox/jquery.fancybox-1.3.4.min.css" | relURL }}">
+  {{ with .OutputFormats.Get "RSS" -}}
+    {{ printf `<link rel="%s" type="%s" href="%s" title="%s">` .Rel .MediaType.Type .RelPermalink $.Site.Title | safeHTML }}
+  {{- end }}
+</head>
+<body>
+  <div id="container">
+    {{ partial "header" . }}
+    <div id="main-content">
+      {{ block "main" . }}{{ end }}
+    </div>
+      
+    {{ partial "footer" . }}
+  </div>
+  <script src="{{ "js/jquery-1.12.2.min.js" | relURL }}"></script>
+  <script src="{{ "js/jquery-migrate-1.4.1.min.js" | relURL }}"></script>
+  <script src="{{ "js/fancybox/jquery.fancybox-1.3.4.pack.js" | relURL }}"></script>
+  <script src="{{ "js/scripts.min.js" | relURL }}"></script>
+</body>
+</html>
