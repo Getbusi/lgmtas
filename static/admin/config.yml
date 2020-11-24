@@ -5,6 +5,22 @@ media_folder: static/images  # uploaded files
 public_folder: /images
 
 collections:  # A list of collections the CMS should be able to edit
+  - name: "galleries"
+    label: "Galleries"
+    files:
+      - label: "Gallery Page"
+        name: "gallery"
+        file: "content/gallery/index.md"
+        fields:
+          - {label: "Title", name: "title", widget: "string"}
+          - {label: "Image", name: "image", widget: "image"}
+          - {label: "Body", name: "body", widget: "markdown"}
+          - label: "Photos"
+            name: "resources"
+            widget: "list"
+            fields:
+              - {label: "Image", name: "src", widget: "image"}
+              - {label: "Title", name: "name", widget: "string"}
   - name: "pages"
     label: "Pages"
     folder: "content"
