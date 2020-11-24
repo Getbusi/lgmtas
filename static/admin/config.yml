@@ -1,0 +1,17 @@
+backend:
+  name: git-gateway
+
+media_folder: static/images  # uploaded files
+public_folder: /images
+
+collections:  # A list of collections the CMS should be able to edit
+  - name: "pages"
+    label: "Pages"
+    folder: "content"
+    create: false  # no new pages
+    delete: false  # no deleting either
+    fields:
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "SEO Title", name: "seo-title", widget: "string"}
+      - {label: "Image", name: "image", widget: "image"}
+      - {label: "Body", name: "body", widget: "markdown"}
