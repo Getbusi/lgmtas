@@ -17,7 +17,7 @@
             {{ range . }}
               {{ $thumbnail := .Fill "146x110" }}
               <li>
-                <a rel="gallery_group" href="{{ .RelPermalink }}" title="{{ .Name }}">
+                <a rel="gallery_group" href="{{ .RelPermalink }}" title="{{ .Title }}">
                   <img alt=" " src="{{ $thumbnail.RelPermalink }}">
                 </a>
               </li>
