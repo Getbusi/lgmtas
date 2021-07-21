@@ -1,5 +1,5 @@
 ---
-title: "Contact us"
+title: "Thanks for getting in touch"
 seo-title: "property maintenance, garden care, garden maintenance"
 image: "/images/bg/fillpic_07.jpg"
 ---
