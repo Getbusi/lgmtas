@@ -5,7 +5,7 @@
       <p id="crumb"><small><strong>You are here:</strong> <a href="/">Home</a> &gt; {{ .Title }}</small></p>
     </header>
     {{ if .Params.image }}
-      <figure id="fillpic">
+      <figure id="fillpic" class="auto">
         <img src="{{ .Params.image | relURL }}" alt=" ">
       </figure>
     {{ end }}
