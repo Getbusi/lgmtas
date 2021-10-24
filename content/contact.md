@@ -1,11 +1,12 @@
 ---
-title: "Contact Us"
-image: "/images/bg/fillpic_11.jpg"
-menus: 
-    main:
-        weight: 11
-    footer:
-        weight: 11
+title: Contact Us
+image: /images/20211024_fillpic_team.jpg
+menus:
+  main:
+    weight: 11
+  footer:
+    weight: 11
+seo-title: Contact us
 ---
 
 Call us today so you can give yourself a life and your garden some style
